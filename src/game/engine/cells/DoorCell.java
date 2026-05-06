@@ -33,52 +33,38 @@ public class DoorCell extends Cell implements CanisterModifier {
 		this.activated = isActivated;
 	}
 
-	
-	@Override
-	public void modifyCanisterEnergy(Monster monster, int canisterValue) {
-	    if (monster.getRole() == this.role) {
-	        monster.alterEnergy(canisterValue);
-	    } else {
-	        monster.alterEnergy(-canisterValue);
-	    }
-	}
-
-	
 	@Override
 	public void onLand(Monster landingMonster, Monster opponentMonster) {
-	    super.onLand(landingMonster, opponentMonster);
+		super.onLand(landingMonster, opponentMonster);
+		
+		if(isActivated())
+			return; 
+		
+		System.out.println(landingMonster.getName() + " landed on " + role + " door!");
+		
+		boolean wasShielded = landingMonster.isShielded();
+	     
+		modifyCanisterEnergy(landingMonster, this.energy);
 
-	    if (this.activated) return;
+		// Only block if the monster took damage (opposing team) and was shielded
+		if (wasShielded && landingMonster.getRole() != this.role) 
+			return;
 
-	    int energyVal = this.energy;
-	    boolean energyChanged = false;
+	    
+		for (Monster monster : Board.getStationedMonsters()) {
+			//Only affect team members
+			if (monster.getRole() == landingMonster.getRole()) {
+				modifyCanisterEnergy(monster, this.energy);
+				System.out.println("  -> " + monster.getName() + " got " + this.energy + " energy!");
+			}
+		}
+		
+		setActivated(true);
+	}
 
-	    // Before energy
-	    int before = landingMonster.getEnergy();
-
-	    // Apply to landing monster
-	    modifyCanisterEnergy(landingMonster, energyVal);
-
-	    if (landingMonster.getEnergy() != before) {
-	        energyChanged = true;
-	    }
-
-	    // Apply to teammates
-	    for (Monster m : Board.getStationedMonsters()) {
-	        if (m.getRole() == landingMonster.getRole()) {
-	            int beforeTeam = m.getEnergy();
-
-	            modifyCanisterEnergy(m, energyVal);
-
-	            if (m.getEnergy() != beforeTeam) {
-	                energyChanged = true;
-	            }
-	        }
-	    }
-
-	    // Activate ONLY if something actually changed
-	    if (energyChanged) {
-	        this.activated = true;
-	    }
+	@Override
+	public void modifyCanisterEnergy(Monster monster, int canisterValue) {
+		//Affect on team members vary according to role
+		monster.alterEnergy(this.role == monster.getRole() ? canisterValue : -canisterValue);
 	}
 }
