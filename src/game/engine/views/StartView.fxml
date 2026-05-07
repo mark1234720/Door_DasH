@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="650" prefWidth="900" style="-fx-background-color: #1a1a2e; -fx-pref-width: 900; -fx-pref-height: 650;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/26" fx:controller="game.engine.views.StartController">
+   <bottom>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="40.0" left="24.0" right="40.0" />
+         </padding>
+         <children>
+            <TitledPane expanded="false" prefWidth="836.0" style="-fx-pref-height: 300; -fx-background-color: #0f172a;" text="📖 Game Instructions (click to expand)" textFill="#94a3b8">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="0.0" prefWidth="834.4" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="1. Choose your side: SCARER or LAUGHER." />
+                                    <Label layoutY="15.0" text="2. Each turn you may optionally activate your powerup before rolling." />
+                                    <Label layoutY="30.0" text="3. Roll the dice — your monster moves that many cells." />
+                                    <Label layoutY="45.0" text="4. Land on special cells for effects:" />
+                                    <Label layoutY="60.0" text="   • Door Cells  – gain energy if matching your role" />
+                                    <Label layoutY="75.0" text="   • Card Cells  – draw a random card with special effects" />
+                                    <Label layoutY="90.0" text="   • Monster Cells – trigger effects from stationed monsters" />
+                                    <Label layoutY="105.0" text="   • Conveyor Belts – move extra cells forward" />
+                                    <Label layoutY="120.0" text="   • Contamination Socks – lose energy!" />
+                                    <Label layoutY="135.0" text="5. First monster to reach cell 99 WITH at least 1000 energy wins!" />
+                                    <Label layoutY="150.0" text="6. A monster eliminated (0 energy) loses immediately." />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+         </children>
+      </VBox>
+   </bottom>
+   <top>
+        <VBox alignment="CENTER" spacing="6.0" style="-fx-background-color: #1a1a2e;" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" style="-fx-font-size: 54px; -fx-text-fill: linear-gradient(to right, #e94560, #a855f7); -fx-font-weight: bold; -fx-translate-y: 10;" text="DoorDasH">
+            <effect>
+               <DropShadow>
+                  <color>
+                     <Color red="0.658823549747467" green="0.3333333432674408" blue="0.9686274528503418" />
+                  </color>
+               </DropShadow>
+            </effect></Label>
+         <Label alignment="BOTTOM_CENTER" text="Scare vs Laugh Touchdown" textFill="#94a3b8">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="44.0" />
+         </padding>
+        </VBox>
+   </top>
+   <center>
+
+                  <HBox alignment="CENTER" spacing="40" BorderPane.alignment="CENTER">
+         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="14.0" style="-fx-pref-width: 360; -fx-pref-height: 300; -fx-background-color: #2d1b2e; -fx-border-color: #e94560; -fx-border-width: 2; -fx-border-radius: 14; -fx-background-radius: 14;">
+            <children>
+               <Label text="😱 SCARER" textFill="#e94560">
+                  <font>
+                     <Font size="26.0" />
+                  </font>
+               </Label>
+               <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0">
+                  <children>
+                     <Label text="👹 Control a Scarer monster" textFill="#cbd5e1" wrapText="true">
+                        <font>
+                           <Font size="13.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="10.0" layoutY="10.0" text="⚡ Activate scare-doors for energy" textFill="#cbd5e1" wrapText="true">
+                        <font>
+                           <Font size="13.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="10.0" layoutY="36.0" text="🎯 Race to cell 99 with 1000+ energy" textFill="#cbd5e1">
+                        <font>
+                           <Font size="13.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </VBox>
+                   <Button onAction="#playScarer" prefHeight="60" prefWidth="220" style="-fx-pref-width: 200; -fx-font-size: 15px; -fx-background-color: e94560; -fx-background-radius: 8;" text="Play as SCARER" textFill="#1a1a2e">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+            </children>
+            <padding>
+               <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+            </padding>
+         </VBox>
+         <VBox alignment="TOP_CENTER" layoutX="260.0" layoutY="30.0" prefHeight="200.0" prefWidth="100.0" spacing="14.0" style="-fx-pref-width: 360; -fx-pref-height: 300; -fx-background-color: #0f2535; -fx-border-color: #22d3ee; -fx-border-width: 2; -fx-border-radius: 14; -fx-background-radius: 14;">
+            <children>
+               <Label text="😂 LAUGHER" textFill="#22d3ee">
+                  <font>
+                     <Font size="26.0" />
+                  </font>
+               </Label>
+               <VBox prefHeight="200.0" prefWidth="100.0" spacing="8.0">
+                  <children>
+                     <Label text="🤣 Control a Laugher monster" textFill="#cbd5e1" wrapText="true">
+                        <font>
+                           <Font size="13.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="10.0" layoutY="10.0" text="😄 Activate laugh-doors for energy" textFill="#cbd5e1" wrapText="true">
+                        <font>
+                           <Font size="13.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="10.0" layoutY="36.0" text="🎯 Race to cell 99 with 1000+ energy" textFill="#cbd5e1">
+                        <font>
+                           <Font size="13.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </VBox>
+               <Button onAction="#playScarer" prefHeight="60" prefWidth="220" style="-fx-pref-width: 200; -fx-font-size: 15px; -fx-background-color: #22d3ee; -fx-background-radius: 8;" text="Play as LAUGHER" textFill="#1a1a2e">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+            </children>
+            <padding>
+               <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+            </padding>
+         </VBox>
+         <padding>
+            <Insets bottom="10.0" left="40.0" right="40.0" top="20.0" />
+         </padding>
+         </HBox>
+   </center>
+
+</BorderPane>

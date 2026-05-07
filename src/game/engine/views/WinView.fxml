@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Region?>
+
+<StackPane
+    prefHeight="650.0"
+    prefWidth="900.0"
+    style="-fx-background-color: #0d0d1a;"
+    xmlns="http://javafx.com/javafx/17"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="game.engine.views.WinController">
+
+    <VBox alignment="CENTER" spacing="30.0">
+        <padding><Insets bottom="40" left="40" right="40" top="40" /></padding>
+
+        <!-- Big banner -->
+        <Label fx:id="winBanner" text="🎉 WINNER! 🎉"
+               style="-fx-text-fill: #f5a623; -fx-font-size: 48px; -fx-font-weight: bold;" />
+
+        <!-- Winner info card -->
+        <VBox alignment="CENTER" spacing="10.0"
+              style="-fx-background-color: #1a1a2e; -fx-background-radius: 16;
+                     -fx-border-color: #f5a623; -fx-border-radius: 16; -fx-border-width: 2;
+                     -fx-padding: 20 40 20 40;">
+            <Label fx:id="winnerName" text="—"
+                   style="-fx-text-fill: #ffffff; -fx-font-size: 28px; -fx-font-weight: bold;" />
+            <Label fx:id="winnerRole" text="—"
+                   style="-fx-text-fill: #f5a623; -fx-font-size: 16px;" />
+        </VBox>
+
+        <!-- Final energy stats -->
+        <HBox alignment="CENTER" spacing="60.0">
+
+            <VBox alignment="CENTER" spacing="8.0"
+                  style="-fx-background-color: #0a3d2e; -fx-background-radius: 12;
+                         -fx-border-color: #00d4aa; -fx-border-radius: 12; -fx-border-width: 2;
+                         -fx-padding: 16 30 16 30;">
+                <Label text="YOUR MONSTER"
+                       style="-fx-text-fill: #00d4aa; -fx-font-size: 11px; -fx-font-weight: bold;" />
+                <Label fx:id="playerFinalName" text="—"
+                       style="-fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-font-weight: bold;" />
+                <Label fx:id="playerFinalEnergy" text="0 energy"
+                       style="-fx-text-fill: #f5a623; -fx-font-size: 22px; -fx-font-weight: bold;" />
+            </VBox>
+
+            <Label text="VS"
+                   style="-fx-text-fill: #444; -fx-font-size: 20px; -fx-font-weight: bold;" />
+
+            <VBox alignment="CENTER" spacing="8.0"
+                  style="-fx-background-color: #3d0a0a; -fx-background-radius: 12;
+                         -fx-border-color: #e94560; -fx-border-radius: 12; -fx-border-width: 2;
+                         -fx-padding: 16 30 16 30;">
+                <Label text="OPPONENT"
+                       style="-fx-text-fill: #e94560; -fx-font-size: 11px; -fx-font-weight: bold;" />
+                <Label fx:id="opponentFinalName" text="—"
+                       style="-fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-font-weight: bold;" />
+                <Label fx:id="opponentFinalEnergy" text="0 energy"
+                       style="-fx-text-fill: #f5a623; -fx-font-size: 22px; -fx-font-weight: bold;" />
+            </VBox>
+
+        </HBox>
+
+        <!-- Play again button -->
+        <Button text="↩  PLAY AGAIN"
+                onAction="#onPlayAgain"
+                mnemonicParsing="false"
+                prefHeight="44.0"
+                prefWidth="200.0"
+                style="-fx-background-color: #e94560; -fx-text-fill: #ffffff;
+                       -fx-font-weight: bold; -fx-font-size: 14px;
+                       -fx-background-radius: 22; -fx-cursor: hand;" />
+    </VBox>
+
+</StackPane>
